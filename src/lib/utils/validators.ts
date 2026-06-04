@@ -56,7 +56,7 @@ export const resetPasswordSchema = z
     path: ['confirmPassword'],
   });
 
-export type ResetPasswordSchema = z.infer<<typeof resetPasswordSchema>;
+export type ResetPasswordSchema = z.infer<typeof resetPasswordSchema>;
 
 // ────────────────────────────────────────────────────────────
 // SETORAN VALIDATORS
