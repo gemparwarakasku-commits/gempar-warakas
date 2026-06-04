@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Offline — GEMPAR</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #FAFBFA;
+      color: #1A1A1A;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+    .container {
+      max-width: 320px;
+      width: 100%;
+    }
+    .logo {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #2E7D32, #1B5E20);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+    }
+    .logo span {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .illustration {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 24px;
+      background: #E8F5E9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .illustration svg {
+      width: 56px;
+      height: 56px;
+      color: #2E7D32;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    p {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+    .timestamp {
+      font-size: 12px;
+      color: #999999;
+      margin-bottom: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 48px;
+      background: #2E7D32;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn:active {
+      opacity: 0.9;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #2E7D32;
+      border: 1px solid #2E7D32;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo"><span>G</span></div>
+
+    <div class="illustration">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+      </svg>
+    </div>
+
+    <h1>Anda sedang offline</h1>
+    <p>Sepertinya koneksi internet Anda terputus. Beberapa fitur tetap dapat diakses.</p>
+
+    <p class="timestamp" id="lastUpdate">Data terakhir: memuat...</p>
+
+    <button class="btn" onclick="location.reload()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+      </svg>
+      Coba Lagi
+    </button>
+
+    <a href="/" class="btn btn-secondary">Kembali ke Beranda</a>
+  </div>
+
+  <script>
+    // Show last update time from cache
+    if ('caches' in window) {
+      caches.keys().then(names => {
+        if (names.length > 0) {
+          document.getElementById('lastUpdate').textContent = 
+            'Data tersedia secara lokal';
+        } else {
+          document.getElementById('lastUpdate').textContent = 
+            'Belum ada data tersimpan';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
