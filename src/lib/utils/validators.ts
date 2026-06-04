@@ -20,7 +20,7 @@ export const loginSchema = z.object({
     .min(6, 'Password minimal 6 karakter'),
 });
 
-export type LoginSchema = z.infer<<typeof loginSchema>;
+export type LoginSchema = z.infer<typeof loginSchema>;
 
 export const pinSchema = z.object({
   pin: z
