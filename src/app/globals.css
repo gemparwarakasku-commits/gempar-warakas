@@ -1,0 +1,252 @@
+/* ============================================================
+   GEMPAR v2.1 — Global Styles
+   Tailwind directives + custom CSS
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+    --color-primary: #2E7D32;
+    --color-premium: #1B5E20;
+    --color-soft: #4CAF50;
+    --color-mint: #E8F5E9;
+    --color-background: #FAFBFA;
+    --color-surface: #FFFFFF;
+    --color-danger: #F44336;
+    --color-info: #2196F3;
+    --color-warning: #FFC107;
+    --color-neutral-900: #1A1A1A;
+    --color-neutral-600: #666666;
+    --color-neutral-500: #999999;
+    --color-neutral-400: #CCCCCC;
+    --color-neutral-200: #EEEEEE;
+    --color-neutral-100: #F5F5F5;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--color-background);
+    color: var(--color-neutral-900);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mobile-first: prevent text selection on UI elements */
+  button, a, [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Touch target minimum 44px */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+
+  /* Remove default button styles */
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Input focus ring */
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: var(--color-primary);
+  }
+}
+
+/* ── Components ── */
+@layer components {
+  /* Card base */
+  .gemp-card {
+    @apply bg-white rounded-2xl shadow-sm p-4;
+  }
+
+  .gemp-card-elevated {
+    @apply bg-white rounded-2xl shadow-lg p-5;
+  }
+
+  .gemp-card-gradient {
+    @apply rounded-3xl shadow-lg p-6 text-white;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-premium) 100%);
+  }
+
+  .gemp-card-mint {
+    @apply bg-[#E8F5E9] rounded-2xl shadow-sm p-4;
+  }
+
+  /* Button base */
+  .gemp-btn {
+    @apply inline-flex items-center justify-center font-semibold transition-all duration-150 ease-out;
+  }
+
+  .gemp-btn-primary {
+    @apply gemp-btn bg-[#2E7D32] text-white rounded-lg shadow-sm;
+    @apply active:scale-[0.97] hover:bg-[#1B5E20];
+  }
+
+  .gemp-btn-secondary {
+    @apply gemp-btn bg-[#1B5E20] text-white rounded-lg shadow-sm;
+    @apply active:scale-[0.97];
+  }
+
+  .gemp-btn-ghost {
+    @apply gemp-btn text-[#2E7D32] border border-[#2E7D32] rounded-lg;
+    @apply active:scale-[0.97];
+  }
+
+  .gemp-btn-danger {
+    @apply gemp-btn bg-[#F44336] text-white rounded-lg shadow-sm;
+    @apply active:scale-[0.97];
+  }
+
+  /* Typography */
+  .gemp-display {
+    @apply text-[32px] font-bold leading-tight;
+  }
+
+  .gemp-heading-1 {
+    @apply text-2xl font-bold leading-snug;
+  }
+
+  .gemp-heading-2 {
+    @apply text-xl font-semibold leading-snug;
+  }
+
+  .gemp-heading-3 {
+    @apply text-base font-semibold leading-snug;
+  }
+
+  .gemp-body {
+    @apply text-sm font-normal leading-relaxed;
+  }
+
+  .gemp-caption {
+    @apply text-xs font-normal leading-snug;
+  }
+
+  .gemp-overline {
+    @apply text-[10px] font-semibold leading-tight uppercase tracking-wide;
+  }
+
+  /* Scrollbar hide */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Safe area bottom for mobile */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    @apply bg-[#EEEEEE] animate-pulse rounded-lg;
+  }
+}
+
+/* ── Utilities ── */
+@layer utilities {
+  /* Text truncate */
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  /* Line clamp */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Touch action */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Prevent pull-to-refresh on iOS */
+  .no-overscroll {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* ── Animations ── */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-slide-up {
+  animation: slideUp 300ms ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 200ms ease-in forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 250ms ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fadeOut 200ms ease-in forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 250ms ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #EEEEEE 25%, #F5F5F5 50%, #EEEEEE 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
