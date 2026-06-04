@@ -30,7 +30,7 @@ export const pinSchema = z.object({
     .regex(/^\d{6}$/, 'PIN hanya boleh angka'),
 });
 
-export type PinSchema = z.infer<<typeof pinSchema>;
+export type PinSchema = z.infer<typeof pinSchema>;
 
 export const forgotPasswordSchema = z.object({
   email: z
