@@ -39,7 +39,7 @@ export const forgotPasswordSchema = z.object({
     .email('Format email tidak valid'),
 });
 
-export type ForgotPasswordSchema = z.infer<<typeof forgotPasswordSchema>;
+export type ForgotPasswordSchema = z.infer<typeof forgotPasswordSchema>;
 
 export const resetPasswordSchema = z
   .object({
@@ -81,7 +81,7 @@ export const setoranSchema = z.object({
     .optional(),
 });
 
-export type SetoranSchema = z.infer<<typeof setoranSchema>;
+export type SetoranSchema = z.infer<typeof setoranSchema>;
 
 // ────────────────────────────────────────────────────────────
 // REWARD VALIDATORS
@@ -95,7 +95,7 @@ export const tukarRewardSchema = z.object({
     .regex(/^\d{6}$/, 'PIN hanya boleh angka'),
 });
 
-export type TukarRewardSchema = z.infer<<typeof tukarRewardSchema>;
+export type TukarRewardSchema = z.infer<typeof tukarRewardSchema>;
 
 // ────────────────────────────────────────────────────────────
 // PROFIL VALIDATORS
@@ -127,7 +127,7 @@ export const profilUpdateSchema = z.object({
     .or(z.literal('')),
 });
 
-export type ProfilUpdateSchema = z.infer<<typeof profilUpdateSchema>;
+export type ProfilUpdateSchema = z.infer<typeof profilUpdateSchema>;
 
 // ────────────────────────────────────────────────────────────
 // MY TEAM VALIDATORS
@@ -157,7 +157,7 @@ export const myTeamSchema = z.object({
     .min(1, 'Jenis sampah wajib dipilih'),
 });
 
-export type MyTeamSchema = z.infer<<typeof myTeamSchema>;
+export type MyTeamSchema = z.infer<typeof myTeamSchema>;
 
 // ────────────────────────────────────────────────────────────
 // FILE UPLOAD VALIDATORS
@@ -195,4 +195,4 @@ export const systemSettingSchema = z.object({
   maintenance_mode: z.boolean().optional(),
 });
 
-export type SystemSettingSchema = z.infer<<typeof systemSettingSchema>;
+export type SystemSettingSchema = z.infer<typeof systemSettingSchema>;
